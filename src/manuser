@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+  read -p "Username: " username
+else
+  username="$1"
+fi
+
+if ! [ -z "$USERNAME" ]; then
+    echo "Enter a username please."
+    exit 1
+fi
+
+if ! id "$username" >/dev/null 2>&1; then
+  echo "User not found. Please create user first."
+  exit 1
+fi
+
+clear
+echo "1) Change Password"
+echo "2) Add User to Group"
+echo "3) Disable User"
+echo "4) Enable User"
+echo "5) Delete User"
+echo "0) Exit"
+read -p ": " choice
+
+case $choice in
+  1)
+    sudo passwd $username
+    ;;
+  2)
+    read -p "Group: " group
+    sudo usermod -aG $group $username
+    ;;
+  3)
+    sudo usermod -L $username
+    ;;
+  4)
+    sudo usermod -U $username
+    ;;
+  5)
+    read -p "Are you sure? [y/N] " choice_del
+    if [ "$choice_del" == "y" ]; then
+      sudo userdel -r $username
+    else
+      echo "Cancelled. Exiting..."
+      exit 0
+    fi
+    ;;
+  0)
+    echo "Goodbye."
+    exit 0
+    ;;
+  *)
+    echo "Invalid choice."
+    exit 1
+    ;;
+esac

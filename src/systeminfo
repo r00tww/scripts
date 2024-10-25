@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+source /etc/os-release
+
+echo "* 1. OS Info"
+echo "OS: $NAME"
+echo "Kernel: $(uname -r)"
+echo "Hostname: $(hostname)"
+
+echo
+
+echo "* 2. CPU Info"
+echo "Processor Number: $(nproc)"
+
+echo
+
+echo "* 3. RAM Info"
+free -h
+
+echo
+

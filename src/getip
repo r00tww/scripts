@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ "$1" == "--help" ]; then
+	echo -e "You can run this script without any argument or with --detailed argument.\n"
+elif [ "$1" == "--detailed" ]; then
+  curl -L myip.bsd.cafe
+else
+  curl -s https://myip.bsd.cafe/raw && printf "\n"
+fi
