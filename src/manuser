@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-if [ -z "$1" ]; then
+if [[ -z "$1" ]]; then
   read -p "Username: " username
 else
   username="$1"
 fi
 
-if ! [ -z "$USERNAME" ]; then
+if ! [[ -z "$USERNAME" ]]; then
     echo "Enter a username please."
     exit 1
 fi
@@ -17,6 +17,11 @@ if ! id "$username" >/dev/null 2>&1; then
 fi
 
 clear
+
+echo "https://github.com/quiww/scripts"
+
+echo
+
 echo "1) Change Password"
 echo "2) Add User to Group"
 echo "3) Disable User"

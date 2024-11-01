@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == "-l" ]]; then
+	LENGTH="$2"
+else
+	echo "Usage: $0 -l [password length]"
+	exit 1
+fi
+
+if command -v openssl >/dev/null; then
+	openssl rand -base64 $LENGTH
+elif command -v uuidgen >/dev/null; then
+	uuidgen | sed 's/[-]//g' | head -c $LENGTH; echo
+else
+	echo "Your system does not have openssl or uuidgen."
+	exit 1
+fi

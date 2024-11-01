@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+echo "https://github.com/quiww/scripts"
+
+# If $1 is blank, exit program.
+if [[ -z "$1" ]]; then
+	echo "Usage: $0 [filename]"
+	exit 1
+fi
+
+file="$1"
+ext="${FILE##*.}"
+
+case "$ext" in
+	tar)
+		tar -xvf "$FILE"
+		;;
+	gz)
+		tar -xzvf "$FILE"
+		;;
+	zip)
+		unzip "$FILE"
+		;;
+	rar)
+		unrar x "$FILE"
+		;;
+	7z)
+		7z x "$FILE"
+		;;
+	*)
+		echo "Unsupported file extension: $ext"
+		echo "If you want this extension, feel free to open issue/pull request in GitHub. https://github.com/quiww/scripts"
+esac
