@@ -1,11 +1,15 @@
 # Script Collection
-
 > [!WARNING]
 > This repository is **NOT** stable.
+> If you want a feature, feel free to open PR or an issue.
 
-My script collection.
+My script collection for Linux.
 
 ## Installation
+### Automated Installation
+Clone repo and run [install.sh](./install.sh) file.
+
+### Manual Installation
 Clone this repo, cd into it and copy `src/*` files to your PATH.
 
 ## Dependencies
