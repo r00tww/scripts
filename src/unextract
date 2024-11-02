@@ -30,4 +30,5 @@ case "$ext" in
 	*)
 		echo "Unsupported file extension: $ext"
 		echo "If you want this extension, feel free to open issue/pull request in GitHub. https://github.com/quiww/scripts"
+		exit 1
 esac

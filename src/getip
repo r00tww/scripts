@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
+error() {
+  echo "$1"
+  exit 1
+}
+
 echo "https://github.com/quiww/scripts"
 
 if [[ "$1" == "--help" ]]; then
-	echo -e "You can run this script without any argument or with --detailed argument.\n"
+  error "Usage: $0 {--detailed}"
 elif [[ "$1" == "--detailed" ]]; then
   curl -L myip.bsd.cafe
 else

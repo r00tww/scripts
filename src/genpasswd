@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
+error() {
+	echo "$1"
+	exit 1
+}
+
 if [[ "$1" == "-l" ]]; then
 	LENGTH="$2"
 else
-	echo "Usage: $0 -l [password length]"
-	exit 1
+	error "$0 -l [pass length]"
 fi
 
 if command -v openssl >/dev/null; then
